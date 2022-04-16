@@ -1,4 +1,5 @@
 # HashTable, HashMap, ConcurrentHashMap
+
 HashTable, HashMap, ConcurrentHashMap 의 차이점 위주로 알아봅니다.  
 좀 더 자세한 설명은 또 따로 포스팅할게요.
 
@@ -180,3 +181,13 @@ public class ConcurrentHashMapEx {
 
 Java에서 HashTable은 권장하지 않는다. 그래서 되도록이면 HashMap을 사용하자!  
 HashMap의 동시성 문제를 해결하려면 ConcurrentHashMap을 사용하자!
+
+<br>
+<br>
+
+## 참고
+
+- [https://ko.wikipedia.org/wiki/해시_테이블](https://ko.wikipedia.org/wiki/%ED%95%B4%EC%8B%9C_%ED%85%8C%EC%9D%B4%EB%B8%94)
+- [http://www.tcpschool.com/java/java_collectionFramework_concept](http://www.tcpschool.com/java/java_collectionFramework_concept)
+- [https://docs.oracle.com/javase/8/docs/api/java/util/Map.html](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
+- [https://mainia.tistory.com/2172](https://mainia.tistory.com/2172)
