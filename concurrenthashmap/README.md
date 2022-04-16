@@ -177,7 +177,7 @@ public class ConcurrentHashMapEx {
 <br>
 <br>
 
-## 정리
+## 정리 
 
 Java에서 HashTable은 권장하지 않는다. 그래서 되도록이면 HashMap을 사용하자!  
 HashMap의 동시성 문제를 해결하려면 ConcurrentHashMap을 사용하자!
