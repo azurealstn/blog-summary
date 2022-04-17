@@ -9,7 +9,7 @@ SOLID란 로버트 마틴(클린코드의 저자)이 정의한 객체 지향 프
 
 ![패키지1](https://user-images.githubusercontent.com/55525868/163705555-9b6778d7-53d7-44a2-b103-829d696916c4.PNG)
 
-패키지 구성은 위와 같이 구성하였고, 모든 소스코드는 github에서 확인할 수 있다.
+패키지 구성은 위와 같이 구성하였고, 모든 소스코드는 [github](https://github.com/azurealstn/blog-summary/tree/main/solid)에서 확인할 수 있다.
 
 ## SRP (단일 책임 원칙)
 
