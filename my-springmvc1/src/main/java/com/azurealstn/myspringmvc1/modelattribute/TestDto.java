@@ -6,5 +6,5 @@ import lombok.Data;
 public class TestDto {
 
    private String name;
-   private int age;
+   private Integer age;
 }

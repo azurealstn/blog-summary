@@ -49,7 +49,7 @@ public String param3(String name, int age) {
 }
 ```
 
-하지만 `@RequestParam`까지 생략해버리면 스프링에 익숙하지 않다면 직관적으로 봤을 때 파라미터 받을 수 있는 변수인지 고민하게 된다. 하지만 `@RequestParam`가 있으면 요청 파라미터로 받는지 확연히 보이니까 왠만하면 `@RequestParam`은 생략하지 말자!
+하지만 `@RequestParam`까지 생략해버리면 스프링에 익숙하지 않다면 직관적으로 봤을 때 어떤 파라미터를 받는지 확인이 어렵다. 하지만 `@RequestParam`이 있으면 요청 파라미터로 받는지 확연히 보이니까 왠만하면 `@RequestParam`은 생략하지 말자!
 
 ## 예제2
 
@@ -81,7 +81,7 @@ public String param4(
 Optional int parameter 'age' is present but cannot be translated into a null value due to being declared as a primitive type
 ```
 
-자바 언어는 **Primitive Type**의 변수는 `null`을 허용하지 않는다. 따라서 타입을 **Wrapper Class**로 변경하면 정상적으로 동작한다.
+자바 언어에서 **Primitive Type**의 변수는 `null`을 허용하지 않는다. 따라서 타입을 **Wrapper Class**로 변경하면 정상적으로 동작한다.
 
 ```java
 @GetMapping("/param4")
@@ -205,6 +205,79 @@ public String modelAttributeV2(@ModelAttribute TestDto testDto, Model model) {
 
 - TestDto -> testDto
 - `@ModelAttribute`도 생략이 가능하다. (하지만 스프링에 익숙하지 않다면 굳이 생략하지 말고 명시적으로 적어두자! - 이유는 헷갈린다..)
+
+## !참고 (@ModelAttribute의 기능 한 가지 더)
+
+```java
+@Controller
+public class AnotherModelAttribute {
+
+    @GetMapping("/ex1")
+    public String ex1(TestDto reqDto, Model model) {
+        List<String> list = new ArrayList<>();
+        list.add("키보드");
+        list.add("마우스");
+        list.add("모니터");
+
+        model.addAttribute("list", list);
+        return "hello/test";
+    }
+    @GetMapping("/ex2")
+    public String ex2(TestDto reqDto, Model model) {
+        List<String> list = new ArrayList<>();
+        list.add("키보드");
+        list.add("마우스");
+        list.add("모니터");
+
+        model.addAttribute("list", list);
+        return "hello/test";
+    }
+    @GetMapping("/ex3")
+    public String ex3(TestDto reqDto, Model model) {
+        List<String> list = new ArrayList<>();
+        list.add("키보드");
+        list.add("마우스");
+        list.add("모니터");
+
+        model.addAttribute("list", list);
+        return "hello/test";
+    }
+}
+```
+
+위 코드처럼 컨트롤러마다 `List`를 생성해서 데이터를 추가하고 `Model`에 담는 반복적인 코드가 있다. 이 반복을 줄일 수 있는 방법을 스프링은 제공한다.
+
+```java
+@Controller
+public class AnotherModelAttribute {
+
+    @ModelAttribute("list")
+    public List<String> list() {
+        List<String> list = new ArrayList<>();
+        list.add("키보드");
+        list.add("마우스");
+        list.add("모니터");
+        return list;
+    }
+
+    @GetMapping("/ex1")
+    public String ex1(TestDto reqDto, Model model) {
+        return "hello/test";
+    }
+    @GetMapping("/ex2")
+    public String ex2(TestDto reqDto, Model model) {
+        return "hello/test";
+    }
+    @GetMapping("/ex3")
+    public String ex3(TestDto reqDto, Model model) {
+        return "hello/test";
+    }
+}
+```
+
+`list`를 반환하는 메서드를 따로 만들어서 `@ModelAttribute("list")` 애노테이션을 사용하면 컨트롤러 호출마다 해당 리턴값을 `Model`에 담아준다.
+
+
 
 ## 마무리
 
