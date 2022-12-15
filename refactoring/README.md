@@ -5,7 +5,7 @@
 > 개선한 내용은 https://jessyt.tistory.com/47 글을 적극적으로 활용하였습니다.
 > 추가로 아래 소스는 회사의 소스와는 무관합니다.
 
->
+> 소스코드: https://github.com/azurealstn/blog-summary/tree/main/refactoring
 
 ## 기존 예제소스
 
@@ -52,7 +52,7 @@ public class ConsultingReportService {
 
 위의 소스를 보면 if else문 안에 로직은 정말 많은 로직이 있다고 가정한다. (많은 로직이란 DB에서 데이터를 가져와서 어떤 DTO에 담고 그 DTO를 리턴하는 형태여야 하지만 그냥 String을 반환하도록 하였음.)
 
-당장 2~3개면 많아보이지 않겠지만 6~7개면 말이 달라진다. 심지어 계속 늘어날 수 있기 떄문에 유지보수를 위해서도 반드시 개선해야 했다.
+당장 2 ~ 3개면 많아보이지 않겠지만 6 ~ 7개면 말이 달라진다. 심지어 계속 늘어날 수 있기 떄문에 유지보수를 위해서도 반드시 개선해야 했다.
 
 <br>
 
@@ -71,7 +71,7 @@ public interface ConsultingReport {
 }
 ```
 
-`ConsultingReport` 인터페이스를 생성하여 `ConsultingReportService` 클래스에서 if else문 안에 로직을 `process()` 메서드에 구현할 것입니다.
+`ConsultingReport` 인터페이스를 생성하여 `ConsultingReportService` 클래스에서 사용했던 if else문 안에 로직을 `process()` 메서드에 구현할 것입니다.
 
 <br>
 
